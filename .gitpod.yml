@@ -11,3 +11,4 @@ tasks:
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
+    $THEIA_WORKSPACE_ROOT

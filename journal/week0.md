@@ -42,9 +42,9 @@ Once the IAM user is created, we can follow the below steps to generate the Acce
   
 ### Set Env Vars
 
-We will set these credentials for the current bash terminal
+We will set these credentials for the current sh terminal
 
-```bash
+```sh
 export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
 export AWS_DEFAULT_REGION=us-east-1
@@ -52,7 +52,7 @@ export AWS_DEFAULT_REGION=us-east-1
 
 We'll tell Gitpod to remember these credentials if we relaunch our workspaces
 
-```bash
+```sh
 gp env AWS_ACCESS_KEY_ID=""
 gp env AWS_SECRET_ACCESS_KEY=""
 gp env AWS_DEFAULT_REGION=us-east-1
@@ -62,13 +62,13 @@ gp env AWS_DEFAULT_REGION=us-east-1
 
 Use the following commnad to get your account ID using AWS CLI.
 
-```bash
+```sh
 aws sts get-caller-identity
 ```
 
 It will show something liek this:
 
-```bash
+```json
 {
     "UserId": "AIDA6FVUREK4GJANRAH6S",
     "Account": "974262444728",
@@ -88,7 +88,7 @@ We have to create an SNS topic before we create an alarm. The SNS topic will sen
 
 Run the following command to create an SNS Topic
 
-```bash
+```sh
 aws sns create-topic --name billing-alarm
 ```
 
@@ -96,7 +96,7 @@ This will return a TopicArn. Make a note of this.
 
 We'll create a subscription providing the TopicARN and our preferred Email address for notifications
 
-```bash
+```sh
 aws sns subscribe \
     --topic-arn TopicARN \
     --protocol email \
@@ -109,4 +109,48 @@ Check your email and confirm the subscription
 
 ### Create Alarm
 
-### Create and AWS Budget
+How can I monitor daily EstimatedCharges and trigger an Amazon CloudWatch alarm based on my usage threshold?
+
+We need to update the configuration json script stored on `/aws/json/alarm_config.json` with the TopicArn we generated earlier.
+
+Once it's ready, run the following command
+
+```sh
+aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm_config.json
+```
+
+We are just a json file because --metrics is is required for expressions and so its easier to us a JSON file.
+
+**Resources:**
+
+[Create and alarm via AWS CLI](https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-estimatedcharges-alarm/)
+[aws cloudwatch put-metric-alarm](https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/put-metric-alarm.html)
+
+![Alarm](assets/Alarm.jpg)
+
+### Create an AWS Budget
+
+Get your AWS account ID
+
+```sh
+aws sts get-caller-identity --query Account --output text
+```
+
+Update the `/aws/json/budget.json/` file with the desired budget amount
+
+Run the following command, updating the AccountID generated earlier
+
+```sh
+aws budgets create-budget \
+    --account-id AccountID \
+    --budget file://aws/json/budget.json \
+    --notifications-with-subscribers file://aws/json/budget-notifications-with-subscribers.json
+```
+
+![Budget](assets/Budget.jpg)
+
+**Resources:**
+
+[aws budgets create-budget](https://docs.aws.amazon.com/cli/latest/reference/budgets/create-budget.html)
+
+## Homework Challenges

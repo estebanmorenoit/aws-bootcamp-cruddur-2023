@@ -1,5 +1,17 @@
 # Week 0 — Billing and Architecture
 
+- [Week 0 — Billing and Architecture](#week-0--billing-and-architecture)
+  - [Homework](#homework)
+    - [Install AWS CLI](#install-aws-cli)
+    - [Create a new User and Generate AWS Credentials](#create-a-new-user-and-generate-aws-credentials)
+    - [Set Env Vars](#set-env-vars)
+    - [Check that the AWS CLI is working and you are the expected user](#check-that-the-aws-cli-is-working-and-you-are-the-expected-user)
+    - [Enable Billing](#enable-billing)
+    - [Create SNS Topic](#create-sns-topic)
+    - [Create Alarm](#create-alarm)
+    - [Create an AWS Budget](#create-an-aws-budget)
+  - [Homework Challenges](#homework-challenges)
+
 ## Homework
 
 ### Install AWS CLI

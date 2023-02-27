@@ -33,12 +33,12 @@ In order to create a new IAM user, we can follow these [steps](https://docs.aws.
 
 Once the IAM user is created, we can follow the below steps to generate the Access Keys:
 
-- Open the **IAM console**
-- In the navigation pane, choose **Users**
+- Open the `IAM console`
+- In the navigation pane, choose `Users`
 - Choose the name of the user whose access keys you want to create
-- On the summary page of the user, choose the **Security Credentials** tab
-- In the **Access Keys** section, choose **Create access key**. Select **Show** to view the new access key pair
-- You can also download .csv file and store the keys in a secure location
+- On the summary page of the user, choose the `Security Credentials` tab
+- In the `Access Keys` section, choose `Create access key`. Select `Show` to view the new access key pair
+- You can also `Download .csv file` and store the keys in a secure location
   
 ### Set Env Vars
 
@@ -78,15 +78,34 @@ It will show something liek this:
 
 ### Enable Billing
 
-- Done
+- In your Root Account go to the [Billing Page](https://console.aws.amazon.com/billing/)
+- Under `Billing Preferences` Choose `Receive Billing Alerts`
+- Save Prefrences
 
 ### Create SNS Topic
 
-SNS Topic created using:
+We have to create an SNS topic before we create an alarm. The SNS topic will send an alert when we get over the alarm threshold. More info [here](https://docs.aws.amazon.com/cli/latest/reference/sns/create-topic.html).
+
+Run the following command to create an SNS Topic
 
 ```bash
 aws sns create-topic --name billing-alarm
 ```
+
+This will return a TopicArn. Make a note of this.
+
+We'll create a subscription providing the TopicARN and our preferred Email address for notifications
+
+```bash
+aws sns subscribe \
+    --topic-arn TopicARN \
+    --protocol email \
+    --notification-endpoint your@email.com
+```
+
+Check your email and confirm the subscription
+
+![SNS Topic](assets/SNS%20Topic.jpg)
 
 ### Create Alarm
 

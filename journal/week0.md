@@ -148,12 +148,11 @@ aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm_config.js
 
 We are just a json file because --metrics is is required for expressions and so its easier to us a JSON file.
 
+![Alarm](assets/Alarm.jpg)
 **Resources:**
 
-[Create and alarm via AWS CLI](https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-estimatedcharges-alarm/)
-[aws cloudwatch put-metric-alarm](https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/put-metric-alarm.html)
-
-![Alarm](assets/Alarm.jpg)
+- [Create and alarm via AWS CLI](https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-estimatedcharges-alarm/)
+- [aws cloudwatch put-metric-alarm](https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/put-metric-alarm.html)
 
 ### Create an AWS Budget
 
@@ -178,6 +177,6 @@ aws budgets create-budget \
 
 **Resources:**
 
-[aws budgets create-budget](https://docs.aws.amazon.com/cli/latest/reference/budgets/create-budget.html)
+- [aws budgets create-budget](https://docs.aws.amazon.com/cli/latest/reference/budgets/create-budget.html)
 
 ## Homework Challenges

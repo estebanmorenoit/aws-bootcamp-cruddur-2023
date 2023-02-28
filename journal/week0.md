@@ -2,6 +2,7 @@
 
 - [Week 0 — Billing and Architecture](#week-0--billing-and-architecture)
   - [Homework](#homework)
+    - [To-do Checklist](#to-do-checklist)
     - [Install AWS CLI](#install-aws-cli)
     - [Create a new User and Generate AWS Credentials](#create-a-new-user-and-generate-aws-credentials)
     - [Set Env Vars](#set-env-vars)
@@ -13,6 +14,20 @@
   - [Homework Challenges](#homework-challenges)
 
 ## Homework
+
+### To-do Checklist
+
+- [x] Watched Week 0 - Live Stream Video - [Video](https://www.youtube.com/live/SG8blanhAOg?feature=share)
+- [x] Watched Chirag's Week 0 - Spend Considerations - [Video](https://youtu.be/OVw3RrlP-sI)
+- [x] Watched Ashish's Week 0 - Security Considerations - [Video](https://youtu.be/4EMWBYVggQI)
+- [ ] Recreate Conceptual Diagram in Lucid Charts - [Link](.) - (Pending)
+- [ ] Recreate Logical Architectual Diagram in Luci Charts - [Link](.) - (Pending)
+- [x] Create an Admin User
+- [x] Use Cloudshell
+- [x] Generate AWS Credentials
+- [x] Install AWS CLI
+- [x] Create a Billing Alarm
+- [x] Create a Budget
 
 ### Install AWS CLI
 

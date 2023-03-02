@@ -77,6 +77,12 @@ export AWS_SECRET_ACCESS_KEY=""
 export AWS_DEFAULT_REGION=us-east-1
 ```
 
+You can ensure the Environment Variables are saved by searching using the following command
+
+```sh
+grep | env AWS
+```
+
 We'll tell Gitpod to remember these credentials if we relaunch our workspaces
 
 ```sh
